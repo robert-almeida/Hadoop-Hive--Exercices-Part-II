@@ -173,10 +173,10 @@ where
     
 #Qual a quantidade de tweets por mês em cada ano?
 select 
-    yyyy as YEAR, mm as MONTH, text as TWEET, sentiment
+    yyyy as YEAR, mm as MONTH, count(*) as COUNT_TWEETS
 from 
     tweet_date 
-where
-    yyyy = '2016' AND mm = '11' AND sentiment = 'NEGATIVO';
+group by
+    yyyy, mm;
 
 
