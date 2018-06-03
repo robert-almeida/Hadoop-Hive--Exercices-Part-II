@@ -39,6 +39,7 @@ GROUP BY
 LIMIT 10;
 
 #Verificando as 10 mensagens mais compartilhadas
+#Alteração do datatype do campo retweet_count de string para integer
 ALTER TABLE tweet_text CHANGE retweet_count retweet_count int;
 DESCRIBE tweet_text;
 
@@ -153,3 +154,29 @@ where sentiment = 'NEGATIVO'
 order by 
   tweet_score desc 
 limit 5;
+
+#Qual a quantidade de tweets por ano?
+select 
+    yyyy as YEAR, count(*) as TWEEETS_BY_YEAR  
+from 
+    tweet_date 
+group by 
+    yyyy;
+    
+#Quais os tweets negativos do mês de novembro de 2016?
+select 
+    yyyy as YEAR, mm as MONTH, text as TWEET, sentiment
+from 
+    tweet_date 
+where
+    yyyy = '2016' AND mm = '11' AND sentiment = 'NEGATIVO';
+    
+#Qual a quantidade de tweets por mês em cada ano?
+select 
+    yyyy as YEAR, mm as MONTH, text as TWEET, sentiment
+from 
+    tweet_date 
+where
+    yyyy = '2016' AND mm = '11' AND sentiment = 'NEGATIVO';
+
+
