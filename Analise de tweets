@@ -179,4 +179,12 @@ from
 group by
     yyyy, mm;
 
-
+#Quais registros apresentam a palavra "Hillary"?
+select 
+    * 
+from 
+    tweet_date 
+lateral view 
+    explode(split(trim(lower(text)),' ')) v1 as tweet 
+where 
+    tweet rlike "hillary";
